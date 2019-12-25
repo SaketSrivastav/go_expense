@@ -176,10 +176,10 @@ func ProcessBankStmt(fileAbsPath string, month int, year int) {
 		log.Fatalln(err)
 	}
 
-	if bank_type == BOFA_CHECK {
-		log.Println("Skip 7 rows of bofa checking bank stmt\n")
-		records = records[7:]
-	}
+	// if bank_type == BOFA_CHECK {
+	// 	log.Println("Skip 7 rows of bofa checking bank stmt\n")
+	// 	records = records[7:]
+	// }
 
 	record_fmt, err := getRecordFmt(bank_type)
 	if err != nil {
@@ -187,7 +187,6 @@ func ProcessBankStmt(fileAbsPath string, month int, year int) {
 	}
 
 	output_records := []string{}
-	var subtotal float64
 	for index, record := range records {
 		// Skip header
 		if index == 0 {
